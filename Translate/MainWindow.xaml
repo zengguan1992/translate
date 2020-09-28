@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Translate"
         mc:Ignorable="d"
-        Title="Translate" Height="300" Width="456.25" Icon="favicon.ico">
+        Title="Translate" Height="300" Width="456.25" Icon="favicon.ico" ResizeMode="CanMinimize">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="205*"/>
