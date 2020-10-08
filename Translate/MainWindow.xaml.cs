@@ -37,9 +37,41 @@ namespace Translate
             string to_str;
             Match match;
             string result = "Text is error or empty";
-            if ((bool)checkBox_cn.IsChecked)
+            //if ((bool)checkBox_cn.IsChecked)
+            //{
+            //    from_str = textBox_from.Text.ToString().Trim();
+            //    to_str = TranslateHelper.translateToCN(from_str);
+            //    match = Regex.Match(to_str, "(?<=\"dst\":\").+(?=\")");
+            //    if (match.Length > 0)
+            //    {
+            //        result = Regex.Unescape(match.Value);
+            //    }
+            //    textBox1_to.Text = result;
+
+            //}
+            //else if ((bool)checkBox_en.IsChecked)
+            //{
+            //    from_str = textBox_from.Text.ToString().Trim();
+            //    to_str = TranslateHelper.translateToEN(from_str);
+            //    match = Regex.Match(to_str, "(?<=\"dst\":\").+(?=\")");
+            //    if (match.Length > 0)
+            //    {
+            //        result = match.Value;
+            //    }
+            //    textBox1_to.Text = result;
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Please check the language.");
+            //}
+            from_str = textBox_from.Text.ToString().Trim();
+            if (string.IsNullOrEmpty(from_str))
             {
-                from_str = textBox_from.Text.ToString().Trim();
+                textBox1_to.Text = result;
+                return;
+            }
+            if (from_str[0]>='A' && from_str[0]<= 'z') //判断首个字符是字母
+            {
                 to_str = TranslateHelper.translateToCN(from_str);
                 match = Regex.Match(to_str, "(?<=\"dst\":\").+(?=\")");
                 if (match.Length > 0)
@@ -47,11 +79,9 @@ namespace Translate
                     result = Regex.Unescape(match.Value);
                 }
                 textBox1_to.Text = result;
-
             }
-            else if ((bool)checkBox_en.IsChecked)
+            else
             {
-                from_str = textBox_from.Text.ToString().Trim();
                 to_str = TranslateHelper.translateToEN(from_str);
                 match = Regex.Match(to_str, "(?<=\"dst\":\").+(?=\")");
                 if (match.Length > 0)
@@ -59,10 +89,6 @@ namespace Translate
                     result = match.Value;
                 }
                 textBox1_to.Text = result;
-            }
-            else
-            {
-                MessageBox.Show("Please check the language.");
             }
         }
 
